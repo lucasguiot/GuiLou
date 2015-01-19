@@ -1,17 +1,56 @@
 package com.android.app.guilou;
 
+//import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+//import android.view.View;
+import android.widget.Button;
 
 
 public class EventMenuActivity extends ActionBarActivity {
 
+    Button btnAddEvent;
+    Button btnListEvent;
+    Button btnInviteEvent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event_menu);
+        setContentView(R.layout.activity_main);
+
+        btnAddEvent = (Button) findViewById(R.id.buttonAddEvent);
+        btnListEvent = (Button) findViewById(R.id.buttonListEvent);
+        btnInviteEvent = (Button) findViewById(R.id.buttonInviteEvent);
+
+        /*
+        btnAddEvent.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(EventMenuActivity.this, FriendMenuActivity.class);
+                startActivity(i);
+            }
+        });
+
+        btnListEvent.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(EventMenuActivity.this, EventMenuActivity.class);
+                startActivity(i);
+            }
+        });
+
+        btnInviteEvent.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(EventMenuActivity.this, FriendMenuActivity.class);
+                startActivity(i);
+            }
+        });*/
     }
 
 

@@ -6,9 +6,22 @@
     <string name="action_settings">Settings</string>
 
     <!-- Page de démarrage -->
-    <string name="friendMenu">Friend</string>
-    <string name="eventMenu">Menu</string>
+    <string name="friendMenu">Ami</string>
+    <string name="eventMenu">Événement</string>
     <string name="title_activity_friend_menu">FriendMenuActivity</string>
     <string name="title_activity_event_menu">EventMenuActivity</string>
+
+    <!-- Menu Friend -->
+    <string name="addFriend">Ajouter un ami</string>
+    <string name="listFriend">Voir tout les amis</string>
+
+    <!-- Menu Event -->
+    <string name="addEvent">Ajouter un événement</string>
+    <string name="listEvent">Voir tout les événements</string>
+    <string name="inviteEvent">Inviter à un événement</string>
+    <string name="title_activity_add_friend">AddFriendActivity</string>
+
+    <!-- Menu Add Friend -->
+    <string name="addFrientText">Ajouter un ami</string>
 
 </resources>
