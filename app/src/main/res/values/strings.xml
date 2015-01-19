@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GuiLou</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Page de démarrage -->
+    <string name="friendMenu">Friend</string>
+    <string name="eventMenu">Menu</string>
+    <string name="title_activity_friend_menu">FriendMenuActivity</string>
+    <string name="title_activity_event_menu">EventMenuActivity</string>
+
+</resources>
