@@ -29,6 +29,12 @@
             android:layout_height="wrap_content"
             android:text="@string/inviteEvent" />
 
+        <Button
+            android:id="@+id/buttonMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/message" />
+
     </LinearLayout>
 
 </RelativeLayout>

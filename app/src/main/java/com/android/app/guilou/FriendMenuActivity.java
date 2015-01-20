@@ -1,17 +1,42 @@
 package com.android.app.guilou;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 
 public class FriendMenuActivity extends ActionBarActivity {
 
+    Button btnAddFriend;
+    Button btnListFriend;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_friend_menu);
+
+        btnAddFriend = (Button) findViewById(R.id.buttonAddFriend);
+        btnListFriend = (Button) findViewById(R.id.buttonListFriend);
+
+        btnAddFriend.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(FriendMenuActivity.this, AddFriendActivity.class);
+                startActivity(i);
+            }
+        });
+
+        btnListFriend.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(FriendMenuActivity.this, ListFriendActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
 

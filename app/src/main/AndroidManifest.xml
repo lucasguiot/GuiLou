@@ -28,6 +28,26 @@
             android:name=".AddFriendActivity"
             android:label="@string/title_activity_add_friend" >
         </activity>
+        <activity
+            android:name=".ListFriendActivity"
+            android:label="@string/title_activity_list_friend" >
+        </activity>
+        <activity
+            android:name=".CreateEventActivity"
+            android:label="@string/title_activity_create_event" >
+        </activity>
+        <activity
+            android:name=".ListEventActivity"
+            android:label="@string/title_activity_list_event" >
+        </activity>
+        <activity
+            android:name=".MessageActivity"
+            android:label="@string/title_activity_message" >
+        </activity>
+        <activity
+            android:name=".InviteEventActivity"
+            android:label="@string/title_activity_invite_event" >
+        </activity>
     </application>
 
 </manifest>

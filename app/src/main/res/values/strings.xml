@@ -19,9 +19,15 @@
     <string name="addEvent">Ajouter un événement</string>
     <string name="listEvent">Voir tout les événements</string>
     <string name="inviteEvent">Inviter à un événement</string>
+    <string name="message">Gérer vos messages</string>
     <string name="title_activity_add_friend">AddFriendActivity</string>
 
     <!-- Menu Add Friend -->
     <string name="addFrientText">Ajouter un ami</string>
+    <string name="title_activity_list_friend">ListFriendActivity</string>
+    <string name="title_activity_create_event">CreateEventActivity</string>
+    <string name="title_activity_list_event">ListEventActivity</string>
+    <string name="title_activity_message">MessageActivity</string>
+    <string name="title_activity_invite_event">InviteEventActivity</string>
 
 </resources>
