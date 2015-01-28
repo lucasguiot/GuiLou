@@ -9,33 +9,33 @@ import android.view.View;
 import android.widget.Button;
 
 
-public class FriendMenuActivity extends ActionBarActivity {
+public class MenuActivity extends ActionBarActivity {
 
-    Button btnAddFriend;
-    Button btnListFriend;
+    Button btnFriend;
+    Button btnEvent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_friend_menu);
+        setContentView(R.layout.activity_menu);
 
-        btnAddFriend = (Button) findViewById(R.id.buttonAddFriend);
-        btnListFriend = (Button) findViewById(R.id.buttonListFriend);
+        btnFriend = (Button) findViewById(R.id.buttonFriendMenu);
+        btnEvent = (Button) findViewById(R.id.buttonEventMenu);
 
-        btnAddFriend.setOnClickListener(new View.OnClickListener() {
+        btnFriend.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(FriendMenuActivity.this, AddFriendActivity.class);
+                Intent i = new Intent(MenuActivity.this, FriendMenuActivity.class);
                 startActivity(i);
             }
         });
 
-        btnListFriend.setOnClickListener(new View.OnClickListener() {
+        btnEvent.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(FriendMenuActivity.this, ListFriendActivity.class);
+                Intent i = new Intent(MenuActivity.this, EventMenuActivity.class);
                 startActivity(i);
             }
         });
@@ -45,7 +45,7 @@ public class FriendMenuActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_friend_menu, menu);
+        getMenuInflater().inflate(R.menu.menu_menu, menu);
         return true;
     }
 

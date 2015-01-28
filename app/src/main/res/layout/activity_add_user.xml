@@ -3,7 +3,8 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.android.app.guilou.AddUserActivity">
 
     <LinearLayout
         android:orientation="vertical"
@@ -15,13 +16,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
             <TextView
-                android:id="@+id/textUserName"
+                android:id="@+id/textAddUser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/userText" />
+                android:text="@string/addUser" />
 
             <EditText
-                android:id="@+id/editUserName"
+                android:id="@+id/editAddUser"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapSentences" />
@@ -32,13 +33,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
             <TextView
-                android:id="@+id/textPassword"
+                android:id="@+id/textAddPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/passwordText" />
+                android:text="@string/addPassword" />
 
             <EditText
-                android:id="@+id/editPassword"
+                android:id="@+id/editAddPassword"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+            <TextView
+                android:id="@+id/textAddPasswordC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/addPasswordC" />
+
+            <EditText
+                android:id="@+id/editAddPasswordC"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword" />
@@ -50,23 +68,11 @@
             android:layout_height="wrap_content" >
 
             <Button
-                android:id="@+id/buttonConfirm"
+                android:id="@+id/buttonAddUserConfirm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/confirm" />
         </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-            <TextView
-                android:id="@+id/textAddUserClick"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/addUserCLick" />
-        </LinearLayout>
-
     </LinearLayout>
 
 </RelativeLayout>

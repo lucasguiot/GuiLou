@@ -6,10 +6,21 @@
     <string name="action_settings">Settings</string>
 
     <!-- Page de démarrage -->
+    <string name="userText">Nom d\'utilisateur : </string>
+    <string name="passwordText">Mot de passe : </string>
+    <string name="confirm">Confirmer</string>
+    <string name="addUserCLick">Ajouter un utilisateur</string>
+
+    <!-- Page AddUser -->
+    <string name="addUser">Nom d\'utilisateur : </string>
+    <string name="addPassword">Mot de passe : </string>
+    <string name="addPasswordC">Confirmer votre mot de passe : </string>
+
+    <!-- Page Menu -->
     <string name="friendMenu">Ami</string>
     <string name="eventMenu">Événement</string>
-    <string name="title_activity_friend_menu">Menu de gestion des amis</string>
-    <string name="title_activity_event_menu">Menu de gestion des événements</string>
+    <string name="title_activity_friend_menu">FriendMenuActivity</string>
+    <string name="title_activity_event_menu">EventMenuActivity</string>
 
     <!-- Menu Friend -->
     <string name="addFriend">Ajouter un ami</string>
@@ -20,16 +31,16 @@
     <string name="listEvent">Voir tout les événements</string>
     <string name="inviteEvent">Inviter à un événement</string>
     <string name="message">Gérer vos messages</string>
-
-    <string name="title_activity_add_friend">Ajouter un ami</string>
+    <string name="title_activity_add_friend">AddFriendActivity</string>
 
     <!-- Menu Add Friend -->
     <string name="addFrientText">Ajouter un ami</string>
-
-    <string name="title_activity_list_friend">Gestion des amis</string>
-    <string name="title_activity_create_event">Création d'événement</string>
-    <string name="title_activity_list_event">Gestion des événements</string>
-    <string name="title_activity_message">Message</string>
-    <string name="title_activity_invite_event">Inviter des amis à un événement</string>
+    <string name="title_activity_list_friend">ListFriendActivity</string>
+    <string name="title_activity_create_event">CreateEventActivity</string>
+    <string name="title_activity_list_event">ListEventActivity</string>
+    <string name="title_activity_message">MessageActivity</string>
+    <string name="title_activity_invite_event">InviteFriendActivity</string>
+    <string name="title_activity_menu">MenuActivity</string>
+    <string name="title_activity_add_user">AddUserActivity</string>
 
 </resources>

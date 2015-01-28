@@ -4,15 +4,14 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -22,12 +21,12 @@ import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 
 
-public class MainActivity extends ActionBarActivity {
+public class AddUserActivity extends ActionBarActivity {
 
     AlertDialog builder;
-    EditText editUserName;
-    EditText editPassword;
-    TextView textAddUserClick;
+    EditText editAddUser;
+    EditText editAddPassword;
+    EditText editAddPasswordC;
     Button btnConfirm;
     Encrypt encrypt;
 
@@ -39,13 +38,13 @@ public class MainActivity extends ActionBarActivity {
                 /**
                  * Permet d'afficher le chargement sur le thread principal
                  */
-                MainActivity.this.runOnUiThread(new Runnable() {
+                AddUserActivity.this.runOnUiThread(new Runnable() {
                     public void run() {
                         builder.show();
                     }
                 });
 
-                Connection c = Jsoup.connect("http://guilou.orgfree.com/connection.php?login="
+                Connection c = Jsoup.connect("http://guilou.orgfree.com/addUser.php?login="
                         + params[0] + "&mdp=" + params[1]); //+ "&event=" + params[1]);
                 /*Toast.makeText(MainActivity.this, "login="
                         + params[0] + "&mdp=" + params[1], Toast.LENGTH_LONG).show();*/
@@ -56,6 +55,9 @@ public class MainActivity extends ActionBarActivity {
             }
             catch (Exception e)
             {
+                Toast.makeText(AddUserActivity.this,
+                        e.getMessage(),
+                        Toast.LENGTH_LONG).show();
                 return "Erreur : " + e.getMessage();
             }
         }
@@ -63,31 +65,24 @@ public class MainActivity extends ActionBarActivity {
         @Override
         protected void onPostExecute(String s) {
             //Toast.makeText(MainActivity.this, s, Toast.LENGTH_LONG).show();
-            if(s.equals("null")){
+            if(s.equals("null")){   // Erreur
                 builder.dismiss();
-                Toast.makeText(MainActivity.this,
-                        "Le nom d'utilisateur et/ou le mot de passe ne sont pas correct",
+                Toast.makeText(AddUserActivity.this,
+                        "Il y a eu une erreur, veuillez essayer ultérieurement",
                         Toast.LENGTH_LONG).show();
-            } else{
-                try {
-                    JSONArray array = new JSONArray(s);
-                    JSONObject json = array.getJSONObject(0);
+            } else if(s.equals("false")) {    // Existe deja
+                builder.dismiss();
+                Toast.makeText(AddUserActivity.this,
+                        "L'utilisateur " + editAddUser.getText().toString() +
+                                " existe déjà. Veuillez changer de nom d'utilisateur",
+                        Toast.LENGTH_LONG).show();
+            } else{     // On ajoute
+                Toast.makeText(AddUserActivity.this,
+                        "L'identifiant est correct. Il a bien été ajouté à la base de données",
+                        Toast.LENGTH_LONG).show();
 
-                    if(json.get("login").equals(editUserName.getText().toString().trim())
-                        && json.get("mdp").equals(
-                            encrypt.encryptPassword(editPassword.getText().toString()))){
-                        builder.dismiss();
-
-                        Toast.makeText(MainActivity.this,
-                                "Mot de passe valide",
-                                Toast.LENGTH_LONG).show();
-
-                        Intent i = new Intent(MainActivity.this, MenuActivity.class);
-                        startActivity(i);
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                Intent i = new Intent(AddUserActivity.this, MainActivity.class);
+                startActivity(i);
             }
 
         }
@@ -96,7 +91,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_add_user);
 
         builder = new AlertDialog.Builder(this).create();
         View v = View.inflate(this, R.layout.layout_progress_bar, null);
@@ -104,34 +99,31 @@ public class MainActivity extends ActionBarActivity {
         builder.setTitle("Chargement");
         builder.setCancelable(false);
 
-        btnConfirm = (Button) findViewById(R.id.buttonConfirm);
-        editUserName = (EditText) findViewById(R.id.editUserName);
-        editPassword = (EditText) findViewById(R.id.editPassword);
-
-        textAddUserClick = (TextView) findViewById(R.id.textAddUserClick);
+        btnConfirm = (Button) findViewById(R.id.buttonAddUserConfirm);
+        editAddUser = (EditText) findViewById(R.id.editAddUser);
+        editAddPassword = (EditText) findViewById(R.id.editAddPassword);
+        editAddPasswordC = (EditText) findViewById(R.id.editAddPasswordC);
 
         btnConfirm.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(editUserName.getWindowToken(), 0);
-                imm.hideSoftInputFromWindow(editPassword.getWindowToken(), 0);
+                imm.hideSoftInputFromWindow(editAddUser.getWindowToken(), 0);
+                imm.hideSoftInputFromWindow(editAddPassword.getWindowToken(), 0);
+                imm.hideSoftInputFromWindow(editAddPasswordC.getWindowToken(), 0);
 
-                String user = editUserName.getText().toString();
-                String password = editPassword.getText().toString();
+                String user = editAddUser.getText().toString();
+                String password = editAddPassword.getText().toString();
+                String passwordC = editAddPasswordC.getText().toString();
 
-                if(user.isEmpty() && password.isEmpty()) {
-                    Toast.makeText(MainActivity.this,
-                            "Veuillez saisir les informations de connection",
+                if(user.isEmpty() || password.isEmpty() || passwordC.isEmpty()) {
+                    Toast.makeText(AddUserActivity.this,
+                            "Il manque des informations",
                             Toast.LENGTH_LONG).show();
-                } else if(user.isEmpty()){
-                    Toast.makeText(MainActivity.this,
-                            "Veuillez saisir une information pour le nom d'utilisateur",
-                            Toast.LENGTH_LONG).show();
-                } else if(password.isEmpty()){
-                    Toast.makeText(MainActivity.this,
-                            "Veuillez saisir une information pour le mot de passe",
+                } else if(!password.toString().equals(passwordC.toString())){
+                    Toast.makeText(AddUserActivity.this,
+                            "Les mot de passe ne sont pas les mêmes",
                             Toast.LENGTH_LONG).show();
                 } else {
                     encrypt = new Encrypt();
@@ -141,28 +133,13 @@ public class MainActivity extends ActionBarActivity {
 
             }
         });
-
-        textAddUserClick.setClickable(true);
-        textAddUserClick.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, AddUserActivity.class);
-                startActivity(i);
-            }
-        });
-
-
-        //JSONObject json = new JSONObject(resultat);
-
-        //String res = AppManager.getUser(1);
-
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_add_user, menu);
         return true;
     }
 
