@@ -1,12 +1,16 @@
 package com.android.app.guilou;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -21,7 +25,54 @@ import java.util.ArrayList;
 public class ListFriendActivity extends ActionBarActivity {
 
     AlertDialog builder;
+    private ListView mainFriendListView;
+    private ArrayAdapter<String> listAdapter;
     ArrayList<User> ami;
+    User userPrinc;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_list_friend);
+
+        builder = new AlertDialog.Builder(this).create();
+        View v = View.inflate(this, R.layout.layout_progress_bar, null);
+        builder.setView(v);
+        builder.setTitle("Chargement");
+        builder.setCancelable(false);
+
+        Intent i = getIntent();
+        userPrinc = (User) i.getSerializableExtra("userPrinc");
+
+        mainFriendListView = (ListView) findViewById( R.id.mainFriendListView );
+        listAdapter = new ArrayAdapter<String>(this, R.layout.simple_row_list_friend);
+        GetAmi getAmi = new GetAmi();
+        getAmi.execute("" + userPrinc.getId());
+        ami = new ArrayList<>();
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_list_friend, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     public class GetAmi extends AsyncTask<String, Void, String>
     {
@@ -64,15 +115,18 @@ public class ListFriendActivity extends ActionBarActivity {
                     for(int i = 0; i < array.length(); i++){
                         JSONObject json = array.getJSONObject(i);
 
-                        Toast.makeText(ListFriendActivity.this,
+                        /*Toast.makeText(ListFriendActivity.this,
                                 "Voici : " + json.get("amiId") + " " + json.get("login"),
-                                Toast.LENGTH_LONG).show();
+                                Toast.LENGTH_LONG).show();*/
 
                         User u = new User(Integer.parseInt(json.get("amiId").toString()),
                                 json.get("login").toString());
 
                         ami.add(i, u);
+                        listAdapter.add(u.getLogin());
                     }
+
+                    mainFriendListView.setAdapter(listAdapter);
 
                     builder.dismiss();
 
@@ -82,44 +136,5 @@ public class ListFriendActivity extends ActionBarActivity {
             }
 
         }
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_friend);
-
-        builder = new AlertDialog.Builder(this).create();
-        View v = View.inflate(this, R.layout.layout_progress_bar, null);
-        builder.setView(v);
-        builder.setTitle("Chargement");
-        builder.setCancelable(false);
-
-        GetAmi getAmi = new GetAmi();
-        getAmi.execute("1");
-        ami = new ArrayList<>();
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_list_friend, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

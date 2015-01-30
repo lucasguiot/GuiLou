@@ -76,13 +76,18 @@ public class MainActivity extends ActionBarActivity {
                     if(json.get("login").equals(editUserName.getText().toString().trim())
                         && json.get("mdp").equals(
                             encrypt.encryptPassword(editPassword.getText().toString()))){
-                        builder.dismiss();
 
                         Toast.makeText(MainActivity.this,
                                 "Mot de passe valide",
                                 Toast.LENGTH_LONG).show();
 
+                        builder.dismiss();
+
+                        User userPrinc = new User(Integer.parseInt(json.get("userId").toString()),
+                                json.get("login").toString());
+
                         Intent i = new Intent(MainActivity.this, MenuActivity.class);
+                        i.putExtra("userPrinc", userPrinc);
                         startActivity(i);
                     }
                 } catch (JSONException e) {

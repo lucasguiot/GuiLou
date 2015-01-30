@@ -18,21 +18,26 @@ public class EventMenuActivity extends ActionBarActivity {
     Button btnAddEvent;
     Button btnListEvent;
     Button btnInviteEvent;
+    User userPrinc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_menu);
 
+        Intent i = getIntent();
+        userPrinc = (User) i.getSerializableExtra("userPrinc");
+
         btnAddEvent = (Button) findViewById(R.id.buttonAddEvent);
-        btnListEvent = (Button) findViewById(R.id.buttonListEvent);
+        btnListEvent = (Button) findViewById(R.id.buttonSynchronizeEvent);
         btnInviteEvent = (Button) findViewById(R.id.buttonInviteEvent);
 
         btnAddEvent.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(EventMenuActivity.this, CreateEventActivity.class);
+                Intent i = new Intent(EventMenuActivity.this, AddEventActivity.class);
+                i.putExtra("userPrinc", userPrinc);
                 startActivity(i);
             }
         });
@@ -41,7 +46,8 @@ public class EventMenuActivity extends ActionBarActivity {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(EventMenuActivity.this, ListEventActivity.class);
+                Intent i = new Intent(EventMenuActivity.this, SynchronizeActivity.class);
+                i.putExtra("userPrinc", userPrinc);
                 startActivity(i);
             }
         });
@@ -51,6 +57,7 @@ public class EventMenuActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(EventMenuActivity.this, InviteEventActivity.class);
+                i.putExtra("userPrinc", userPrinc);
                 startActivity(i);
             }
         });

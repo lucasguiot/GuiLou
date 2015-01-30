@@ -35,10 +35,6 @@
             android:label="@string/title_activity_list_friend" >
         </activity>
         <activity
-            android:name=".CreateEventActivity"
-            android:label="@string/title_activity_create_event" >
-        </activity>
-        <activity
             android:name=".ListEventActivity"
             android:label="@string/title_activity_list_event" >
         </activity>
@@ -57,6 +53,14 @@
         <activity
             android:name=".AddUserActivity"
             android:label="@string/title_activity_add_user" >
+        </activity>
+        <activity
+            android:name=".AddEventActivity"
+            android:label="@string/title_activity_add_event" >
+        </activity>
+        <activity
+            android:name=".SynchronizeActivity"
+            android:label="@string/title_activity_synchronize" >
         </activity>
     </application>
 

@@ -7,17 +7,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 public class FriendMenuActivity extends ActionBarActivity {
 
     Button btnAddFriend;
     Button btnListFriend;
+    User userPrinc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend_menu);
+
+        Intent i = getIntent();
+        userPrinc = (User) i.getSerializableExtra("userPrinc");
 
         btnAddFriend = (Button) findViewById(R.id.buttonAddFriend);
         btnListFriend = (Button) findViewById(R.id.buttonListFriend);
@@ -27,6 +32,7 @@ public class FriendMenuActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(FriendMenuActivity.this, AddFriendActivity.class);
+                i.putExtra("userPrinc", userPrinc);
                 startActivity(i);
             }
         });
@@ -36,6 +42,7 @@ public class FriendMenuActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(FriendMenuActivity.this, ListFriendActivity.class);
+                i.putExtra("userPrinc", userPrinc);
                 startActivity(i);
             }
         });

@@ -19,8 +19,8 @@
     <!-- Page Menu -->
     <string name="friendMenu">Ami</string>
     <string name="eventMenu">Événement</string>
-    <string name="title_activity_friend_menu">FriendMenuActivity</string>
-    <string name="title_activity_event_menu">EventMenuActivity</string>
+    <string name="title_activity_friend_menu">Menu des amis</string>
+    <string name="title_activity_event_menu">Menu des événements</string>
 
     <!-- Menu Friend -->
     <string name="addFriend">Ajouter un ami</string>
@@ -31,16 +31,29 @@
     <string name="listEvent">Voir tout les événements</string>
     <string name="inviteEvent">Inviter à un événement</string>
     <string name="message">Gérer vos messages</string>
-    <string name="title_activity_add_friend">AddFriendActivity</string>
+    <string name="title_activity_add_friend">Ajouter un ami</string>
+
+    <!-- Menu Add Event -->
+    <string name="addEventName">Donner un nom à l\'évènement</string>
+    <string name="addEventDescription">Description de l\'évènement</string>
+    <string name="addEventBeginDate">Date de début</string>
+    <string name="addEventEndDate">Date de fin</string>
+    <string name="addEventBeginHour">Heure de début</string>
+    <string name="addEventEndHour">Heure de fin</string>
+    <string name="buttonSuppr">Supprimer</string>
+    <string name="buttonInviteConfirm">Confirmer</string>
+    <string name="synchronize">Synchroniser les événements avec l\'agenda</string>
+    <string name="syncReturn">Retour</string>
 
     <!-- Menu Add Friend -->
     <string name="addFrientText">Ajouter un ami</string>
-    <string name="title_activity_list_friend">ListFriendActivity</string>
-    <string name="title_activity_create_event">CreateEventActivity</string>
-    <string name="title_activity_list_event">ListEventActivity</string>
-    <string name="title_activity_message">MessageActivity</string>
-    <string name="title_activity_invite_event">InviteFriendActivity</string>
-    <string name="title_activity_menu">MenuActivity</string>
-    <string name="title_activity_add_user">AddUserActivity</string>
+    <string name="title_activity_list_friend">Liste d\'ami</string>
+    <string name="title_activity_list_event">Liste d\'événement</string>
+    <string name="title_activity_message">Message</string>
+    <string name="title_activity_invite_event">Invitation</string>
+    <string name="title_activity_menu">Menu</string>
+    <string name="title_activity_add_user">Ajouter un utilisateur</string>
+    <string name="title_activity_add_event">Ajouter un événement</string>
+    <string name="title_activity_synchronize">SynchronizeActivity</string>
 
 </resources>

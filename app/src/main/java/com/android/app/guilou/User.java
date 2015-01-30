@@ -1,9 +1,11 @@
 package com.android.app.guilou;
 
+import java.io.Serializable;
+
 /**
  * Created by Lucas on 26/01/2015.
  */
-public class User {
+public class User implements Serializable{
     public int id;
     public String login;
 
